@@ -7,7 +7,7 @@
  * @package           Navcv
  *
  * @wordpress-plugin
- * Plugin Name:       Dynamic Shortcodes
+ * Plugin Name:       ETD Dynamic Shortcodes
  * Plugin URI:        https://navigators.org
  * Description:       Create and edit text replacement shortcodes.
  * Version:           1.0.0
