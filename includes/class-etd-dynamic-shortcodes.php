@@ -79,7 +79,7 @@ class ETD_Dynamic_Shortcodes {
 		add_action( 'init', array( $this, 'define_shortcodes' ), 10 );
 		
 		// Clear transient on save
-		add_action( 'save_post', array( $this, 'clear_transient' ), 10, 1 );
+		add_action( 'save_post', array( $this, 'clear_transient' ), 50, 1 );
 
 	}
 
