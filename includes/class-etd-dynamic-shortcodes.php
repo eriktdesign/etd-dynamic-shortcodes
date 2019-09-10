@@ -77,6 +77,9 @@ class ETD_Dynamic_Shortcodes {
 
 		// add shortcodes
 		add_action( 'init', array( $this, 'define_shortcodes' ), 10 );
+		
+		// Clear transient on save
+		add_action( 'save_post', array( $this, 'clear_transient' ), 10, 1 );
 
 	}
 
@@ -174,7 +177,7 @@ class ETD_Dynamic_Shortcodes {
 			}
 			
 			// Save results
-			set_transient( 'etd_defined_shortcodes', 24 * HOUR_IN_SECONDS );
+			set_transient( 'etd_defined_shortcodes', $this->defined_shortcodes, 24 * HOUR_IN_SECONDS );
 		}
 
 		// Return array of $tag => $value pairs
@@ -240,6 +243,16 @@ class ETD_Dynamic_Shortcodes {
 
 		// Send the output
 		return $output;
+	}
+	
+	/**
+	 * Clear the transient when saving a dynamic shortcode post
+	 */
+	public function clear_transient( $post_id ) {
+		if ( 'dynamic_shortcode' == get_post_type( $post_id ) ) {
+			delete_transient( 'etd_defined_shortcodes' );
+			$this->get_shortcodes();
+		}
 	}
 
 }

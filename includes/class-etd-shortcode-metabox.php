@@ -126,8 +126,6 @@ class ETD_Shortcode_Metabox {
 		update_post_meta( $post_id, 'shortcode_tag', $shortcode_new_tag );
 		update_post_meta( $post_id, 'shortcode_value', $shortcode_new_value );
 
-		delete_transient( 'etd_defined_shortcodes' );
-
 	}
 
 	/**
